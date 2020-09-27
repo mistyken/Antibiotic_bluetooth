@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 int modevValue = intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, BluetoothAdapter.ERROR);
                 if (modevValue==BluetoothAdapter.SCAN_MODE_CONNECTABLE)
                 {
+                    // super.onActivityResult(requestCode, resultCode, data);
                     scantxt.setText("This device is not in discoverable");
                 }else if(modevValue==BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE)
                 {
