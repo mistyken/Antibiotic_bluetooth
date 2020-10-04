@@ -14,13 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class DiscoverFrag extends Fragment {
+public class DiscoverFragment extends Fragment {
 
     Button btndiscov;
     BluetoothAdapter bluetoothAdapter;
     Intent discoverIntent;
     TextView txtview;
-    private static final int REQUEST_DISCOVER_BT =1;
+    private static final int REQUEST_DISCOVER_BT = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,7 +35,7 @@ public class DiscoverFrag extends Fragment {
         btndiscov.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!bluetoothAdapter.isDiscovering()){
+                if (!bluetoothAdapter.isDiscovering()) {
                     showToash("Making your device discoverable");
                     Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
                     startActivityForResult(intent, REQUEST_DISCOVER_BT);
@@ -47,7 +47,7 @@ public class DiscoverFrag extends Fragment {
     }
 
     // function of toast message
-    private void showToash(String msg){
-        Toast.makeText(DiscoverFrag.super.getContext(), msg, Toast.LENGTH_LONG).show();
+    private void showToash(String msg) {
+        Toast.makeText(DiscoverFragment.super.getContext(), msg, Toast.LENGTH_LONG).show();
     }
 }

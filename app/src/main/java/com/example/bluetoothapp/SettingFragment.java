@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 import static android.app.Activity.RESULT_OK;
 
 
-public class Fragment2 extends Fragment {
+public class SettingFragment extends Fragment {
     Button btn1;
     BluetoothAdapter bluetoothAdapter;
     Intent btEnableIntent;
@@ -30,22 +31,22 @@ public class Fragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_2, container, false);
+        View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
-        btn1                =  view.findViewById(R.id.btn_Enable);
-        txtview             =  view.findViewById(R.id.textView2);
-        mImageV   =  view.findViewById(R.id.bluetoothimage);
-        bluetoothAdapter    =  BluetoothAdapter.getDefaultAdapter();
+        btn1 = view.findViewById(R.id.btn_Enable);
+        txtview = view.findViewById(R.id.textView2);
+        mImageV = view.findViewById(R.id.bluetoothimage);
+        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         // check if bluetooth is available or not
-        if (bluetoothAdapter == null){
+        if (bluetoothAdapter == null) {
             txtview.setText("Bluetooth is not available");
-        }else {
+        } else {
             txtview.setText("Bluetooth is availbale");
         }
 
         // set image according to bluetooth status
-        if (bluetoothAdapter.isEnabled()){
+        if (bluetoothAdapter.isEnabled()) {
             mImageV.setImageResource(R.drawable.ic_action_on);
         } else {
             mImageV.setImageResource(R.drawable.ic_action_off);
@@ -55,11 +56,11 @@ public class Fragment2 extends Fragment {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!bluetoothAdapter.isEnabled()){
+                if (!bluetoothAdapter.isEnabled()) {
                     showToash("Tunning on Bluetooth");
                     Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(intent, REQUEST_ENABLE_BT);
-                }else {
+                } else {
                     showToash("Bluetooth is already enabled");
                 }
             }
@@ -70,12 +71,12 @@ public class Fragment2 extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_ENABLE_BT:
-                if(requestCode == RESULT_OK){
+                if (requestCode == RESULT_OK) {
                     mImageV.setImageResource(R.drawable.ic_action_on);
                     showToash("Bluetooth is on");
-                }else{
+                } else {
                     showToash("Could't bluetooth");
                 }
                 break;
@@ -86,7 +87,7 @@ public class Fragment2 extends Fragment {
     }
 
     // function of toast message
-    private void showToash(String msg){
-        Toast.makeText(Fragment2.super.getContext(), msg, Toast.LENGTH_LONG).show();
+    private void showToash(String msg) {
+        Toast.makeText(SettingFragment.super.getContext(), msg, Toast.LENGTH_LONG).show();
     }
 }

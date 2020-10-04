@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class DisconnectFrag extends Fragment {
+public class DisconnectFragment extends Fragment {
     Button btndisonn;
     BluetoothAdapter myAdapter;
     Intent disconnIntent;
@@ -35,11 +35,11 @@ public class DisconnectFrag extends Fragment {
         btndisonn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(myAdapter.isEnabled()){
+                if (myAdapter.isEnabled()) {
                     myAdapter.disable();
                     showToast("Turning off Bluetooth");
                     imageView.setImageResource(R.drawable.ic_action_off);
-                }else{
+                } else {
                     showToast("Bluetooth is already off ");
                 }
             }
@@ -47,8 +47,9 @@ public class DisconnectFrag extends Fragment {
 
         return view;
     }
+
     // function of toast message
-    private void showToast(String msg){
-        Toast.makeText(DisconnectFrag.super.getContext(), msg, Toast.LENGTH_LONG).show();
+    private void showToast(String msg) {
+        Toast.makeText(DisconnectFragment.super.getContext(), msg, Toast.LENGTH_LONG).show();
     }
 }

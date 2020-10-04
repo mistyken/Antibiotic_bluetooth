@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.Set;
 
 
-public class PairFrag extends Fragment {
+public class PairFragment extends Fragment {
 
     Button btnpair;
     BluetoothAdapter bluetoothAdapter;
@@ -54,6 +54,6 @@ public class PairFrag extends Fragment {
     }
     // function of toast message
     private void showToast(String msg){
-        Toast.makeText(PairFrag.super.getContext(), msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(PairFragment.super.getContext(), msg, Toast.LENGTH_LONG).show();
     }
 }

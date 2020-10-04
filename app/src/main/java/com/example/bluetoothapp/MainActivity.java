@@ -14,11 +14,11 @@ import android.widget.Spinner;
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinner;
-    Fragment1 fragment1;
-    Fragment2 fragment2;
-    PairFrag fragment3;
-    DiscoverFrag frag4;
-    DisconnectFrag disconnectFrag;
+    DisclaimerFragment disclaimerFragment;
+    SettingFragment settingFragment;
+    PairFragment pairFragment;
+    DiscoverFragment discoverFragment;
+    DisconnectFragment disconnectFrag;
 
 
     @Override
@@ -27,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         spinner = findViewById(R.id.spinner1);
-        fragment1 = new Fragment1();
-        fragment2 = new Fragment2();
-        fragment3 = new PairFrag();
-        frag4 = new DiscoverFrag();
-        disconnectFrag = new DisconnectFrag();
+        disclaimerFragment = new DisclaimerFragment();
+        settingFragment = new SettingFragment();
+        pairFragment = new PairFragment();
+        discoverFragment = new DiscoverFragment();
+        disconnectFrag = new DisconnectFragment();
 
         ArrayAdapter<String> myadapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item,
@@ -45,19 +45,19 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        setFragment(fragment1);
+                        setFragment(disclaimerFragment);
                         break;
                     case 1:
-                        setFragment(fragment2);
+                        setFragment(settingFragment);
                         break;
                     case 2:
-                        setFragment(fragment3);
+                        setFragment(pairFragment);
                         break;
                     case 3:
                         setFragment(disconnectFrag);
                         break;
                     case 4:
-                        setFragment(frag4);
+                        setFragment(discoverFragment);
                         break;
                 }
 
