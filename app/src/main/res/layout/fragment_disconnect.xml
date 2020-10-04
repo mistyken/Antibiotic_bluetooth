@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DisconnectFrag">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="137dp"
+            android:gravity="center"
+            android:text="Fragment 4 - Disconnect"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/bbimage"
+            android:layout_width="150dp"
+            android:layout_height="93sp"
+            android:layout_marginStart="90dp" />
+
+        <Button
+            android:id="@+id/btnOff"
+            android:layout_width="220dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="90dp"
+            android:background="@drawable/htb2"
+            android:text="Turn off BlueTooth"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:src="@drawable/htb2"
+            android:layout_marginTop="64dp"/>
+
+    </LinearLayout>
+</FrameLayout>
