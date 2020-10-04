@@ -4,80 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDF1CA"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_off"
-        android:layout_width="141dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="64dp"
-        android:background="#E0F7FA"
-        android:text="@string/off"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toEndOf="@+id/btn_Discover"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_Discover"
-        android:layout_width="141dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="64dp"
-        android:background="#E0F7FA"
-        android:text="@string/enable"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="2dp">
 
-    <ListView
-        android:id="@+id/listV_devices"
-        android:layout_width="0dp"
-        android:layout_height="261dp"
-        android:layout_marginTop="36dp"
-        android:background="#EDEFF1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Discover" />
 
-    <Button
-        android:id="@+id/btn_listpaireddevices"
-        android:layout_width="202dp"
-        android:layout_height="84dp"
-        android:background="#E0F7FA"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/blue2"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:title="Select One of the options: "
+            app:titleTextColor="@android:color/background_light">
 
-        android:text="@string/paired_devices"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_scan"
-        app:layout_constraintHorizontal_bias="0.209"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listV_devices"
-        app:layout_constraintVertical_bias="0.506" />
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="@android:color/holo_orange_dark"
+                android:backgroundTint="#ffff" />
+        </androidx.appcompat.widget.Toolbar>
 
-    <Button
-        android:id="@+id/btn_scan"
-        android:layout_width="185dp"
-        android:layout_height="70dp"
-        android:background="#E0F7FA"
-        android:text="Scan"
-        android:textSize="18sp"
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/mainFrag"
+        android:layout_width="match_parent"
+        android:layout_height="501dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listV_devices" />
-
-    <TextView
-        android:id="@+id/scanTxt"
-        android:layout_width="241dp"
-        android:layout_height="54dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/btn_listpaireddevices"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listV_devices" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

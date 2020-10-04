@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="121dp"
+            android:gravity="center"
+            android:text=" Fragment 2 - Enable"
+            android:textSize="30dp" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/bluetoothimage"
+            android:layout_width="150dp"
+            android:layout_height="93sp"
+            android:layout_marginStart="90dp" />
+
+        <Button
+            android:id="@+id/btn_Enable"
+            android:layout_width="205dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="72dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginTop="64dp"
+            android:text="Enable BlueTooth"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+
+</FrameLayout>
