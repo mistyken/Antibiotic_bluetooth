@@ -14,6 +14,7 @@
         <item> Paired Device  </item>
         <item> Disconnect </item>
         <item> Discover </item>
+        <item> BLE Buttons </item>
     </string-array>
 
 </resources>
