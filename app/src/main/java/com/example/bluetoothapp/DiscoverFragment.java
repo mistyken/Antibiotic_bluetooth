@@ -38,6 +38,7 @@ public class DiscoverFragment extends Fragment {
                 if (!bluetoothAdapter.isDiscovering()) {
                     showToash("Making your device discoverable");
                     Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+                    intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
                     startActivityForResult(intent, REQUEST_DISCOVER_BT);
                 }
             }

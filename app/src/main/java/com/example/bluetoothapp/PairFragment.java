@@ -28,9 +28,9 @@ public class PairFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_pair, container, false);
+        View view = inflater.inflate(R.layout.fragment_pair, container, false);
 
-        btnpair = view.findViewById(R.id.btnPair);
+        btnpair = view.findViewById(R.id.btnPairedDevices);
         txtview = view.findViewById(R.id.txPair);
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -38,22 +38,25 @@ public class PairFragment extends Fragment {
         btnpair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bluetoothAdapter.isEnabled()){
+                if (bluetoothAdapter.isEnabled()) {
                     txtview.setText("Paired Devices: ");
                     Set<BluetoothDevice> devices = bluetoothAdapter.getBondedDevices();
-                    for (BluetoothDevice device: devices){
+                    for (BluetoothDevice device : devices) {
                         txtview.append("\nDevice: " + device.getName() + "," + device);
                     }
-                }else {
+                } else {
                     showToast("Turn on bluetooth to get paired devices");
                 }
             }
         });
 
+
+
         return view;
     }
+
     // function of toast message
-    private void showToast(String msg){
+    private void showToast(String msg) {
         Toast.makeText(PairFragment.super.getContext(), msg, Toast.LENGTH_LONG).show();
     }
 }
