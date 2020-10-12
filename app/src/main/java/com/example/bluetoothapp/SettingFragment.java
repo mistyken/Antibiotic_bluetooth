@@ -83,7 +83,8 @@ public class SettingFragment extends Fragment {
         }
 
 
-        super.onActivityResult(requestCode, resultCode, data);
+        super.
+                onActivityResult(requestCode, resultCode, data);
     }
 
     // function of toast message

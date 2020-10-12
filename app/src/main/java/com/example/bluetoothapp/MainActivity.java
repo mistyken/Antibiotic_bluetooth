@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     PairFragment pairFragment;
     DiscoverFragment discoverFragment;
     DisconnectFragment disconnectFrag;
+    BleMainActivity bleMainActivity;
 
 
     @Override
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         pairFragment = new PairFragment();
         discoverFragment = new DiscoverFragment();
         disconnectFrag = new DisconnectFragment();
+        bleMainActivity = new BleMainActivity();
+
 
         ArrayAdapter<String> myadapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item,
@@ -58,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 4:
                         setFragment(discoverFragment);
+                        break;
+                    case 5:
+                        setFragment(bleMainActivity);
                         break;
                 }
 
