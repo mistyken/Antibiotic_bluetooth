@@ -10,10 +10,11 @@
 
     <string-array name="frag_options">
         <item> Disclaimer </item>
-        <item> Enable </item>
+        <item> Enable/Disable </item>
         <item> Paired Device  </item>
         <item> Disconnect </item>
         <item> Discover </item>
+        <item> BLE Buttons </item>
     </string-array>
 
 </resources>
