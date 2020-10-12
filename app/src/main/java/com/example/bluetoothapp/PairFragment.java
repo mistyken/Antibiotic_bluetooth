@@ -21,7 +21,6 @@ public class PairFragment extends Fragment {
 
     Button btnpair;
     BluetoothAdapter bluetoothAdapter;
-    Intent discoverIntent;
     TextView txtview;
 
     @Override
