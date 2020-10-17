@@ -7,51 +7,41 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class DiscoverFragment extends Fragment {
-
     Button btndiscov;
+    Button btnScan;
     BluetoothAdapter bluetoothAdapter;
     private static final int REQUEST_DISCOVER_BT = 1;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
-        final BroadcastReceiver discoveryFinishReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
+        return inflater.inflate(R.layout.fragment_discover, container, false);
+    }
 
-                if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                    BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                    if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
-                        showToast(device.getName() + " is paired. Address is " + device.getAddress());
-                    }
-                } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                        showToast("Discovery completed");
-                }
-            }
-        };
 
-        View view = inflater.inflate(R.layout.fragment_discover, container, false);
-
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         btndiscov = view.findViewById(R.id.btnDiscover);
+        btnScan = view.findViewById(R.id.btnScan);
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         btndiscov.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!bluetoothAdapter.isDiscovering()) {
+                if (bluetoothAdapter.getScanMode() != BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE) {
                     showToast("Making your device discoverable");
                     Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
                     intent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 120);
@@ -60,7 +50,17 @@ public class DiscoverFragment extends Fragment {
             }
         });
 
-        return view;
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bluetoothAdapter.isDiscovering()) {
+                    bluetoothAdapter.cancelDiscovery();
+                }
+
+                showToast("Scanning nearby devices");
+                bluetoothAdapter.startDiscovery();
+            }
+        });
     }
 
     // function of toast message
