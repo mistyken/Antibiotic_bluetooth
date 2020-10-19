@@ -50,7 +50,7 @@ public class DevicesListActivity extends AppCompatActivity implements AdapterVie
 
         dialog = new ProgressDialog(this);
         dialog.setCancelable(false);
-        dialog.setMessage("Loading available peripherials...");
+        dialog.setMessage("Loading available peripherals...");
         dialog.show();
 
         swipeRefreshLayout = findViewById(R.id.refresher);

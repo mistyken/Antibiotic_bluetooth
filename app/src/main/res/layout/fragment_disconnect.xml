@@ -12,13 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="137dp"
-            android:gravity="center"
-            android:text="Fragment 4 - Disconnect"
-            android:textSize="30dp" />
-
         <ImageView
             android:id="@+id/bbimage"
             android:layout_width="150dp"

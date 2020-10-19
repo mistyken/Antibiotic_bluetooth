@@ -13,13 +13,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:gravity="center"
-            android:text=" Fragment 1"
-            android:textSize="30dp" />
-
-        <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="160dp"
