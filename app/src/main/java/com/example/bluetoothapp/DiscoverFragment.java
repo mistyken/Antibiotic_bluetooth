@@ -118,7 +118,7 @@ public class DiscoverFragment extends Fragment {
 
             Intent intent = new Intent();
             intent.putExtra("device_address", address);
-            
+
             showToast(address);
         }
     };
