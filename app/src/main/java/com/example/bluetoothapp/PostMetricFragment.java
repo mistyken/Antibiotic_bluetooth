@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class PostMetricFragment extends Fragment {
 
@@ -37,17 +38,19 @@ public class PostMetricFragment extends Fragment {
 
         Button getUser = view.findViewById(R.id.getUserButton);
         final Button postMetric = view.findViewById(R.id.postMetricButton);
-        final EditText emailField2 = view.findViewById(R.id.emailField1);
+        final EditText emailField2 = view.findViewById(R.id.emailField2);
         final EditText deviceId = view.findViewById(R.id.deviceIdField);
         final EditText heartRate = view.findViewById(R.id.heartRateField);
 
         postMetric.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mViewModel.postMetrics(emailField2.getText().toString(),
-                        deviceId.getText().toString(),
-                        heartRate.getText().toString(),
-                        "12345678");
+                String email = emailField2.getText().toString();
+                String deviceID = deviceId.getText().toString();
+                String heart_rate = heartRate.getText().toString();
+                Toast.makeText(PostMetricFragment.super.getContext(), String.format("%s %s %s %s", email, deviceID, heart_rate, "123456"), Toast.LENGTH_SHORT).show();
+
+                mViewModel.postMetrics(email, deviceID, heart_rate, "123456");
             }
         });
     }

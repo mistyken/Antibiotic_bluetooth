@@ -15,6 +15,7 @@
         <item> Disconnect </item>
         <item> Discover </item>
         <item> BLE Buttons </item>
+        <item> Post Metrics </item>
     </string-array>
 
 </resources>

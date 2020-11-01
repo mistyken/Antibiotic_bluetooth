@@ -1,5 +1,11 @@
 package com.example.bluetoothapp;
 
+import android.app.Application;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,11 +78,12 @@ public class PostMetricViewModel extends ViewModel {
             @Override
             public void onResponse(Call<Metric> call, Response<Metric> response) {
 
+                Log.i("INFO", response.toString());
             }
 
             @Override
             public void onFailure(Call<Metric> call, Throwable t) {
-
+                Log.e("ERROR", t.toString());
             }
         });
     }

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Metric {
     String email;
-    String device_id;
+    String deviceId;
     String datetime;
     String heart_rate;
 
@@ -17,18 +17,18 @@ public class Metric {
     }
 
     public String get_device_id() {
-        return device_id;
+        return deviceId;
     }
 
-    public void set_device_id(String device_id) {
-        this.device_id = device_id;
+    public void set_device_id(String deviceId) {
+        this.deviceId = deviceId;
     }
 
     public String get_heart_rate() {
         return heart_rate;
     }
 
-    public void set_heart_rate(String device_id) {
+    public void set_heart_rate(String heart_rate) {
         this.heart_rate = heart_rate;
     }
 
