@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     DiscoverFragment discoverFragment;
     DisconnectFragment disconnectFrag;
     BleMainActivity bleMainActivity;
+    PostMetricFragment postMetricFrag;
 
 
     @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         pairFragment = new PairFragment();
         discoverFragment = new DiscoverFragment();
         disconnectFrag = new DisconnectFragment();
+        postMetricFrag = new PostMetricFragment();
         bleMainActivity = new BleMainActivity();
 
 
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     case 5:
                         setFragment(bleMainActivity);
                         break;
+                    case 6:
+                        setFragment(postMetricFrag);
                 }
 
             }

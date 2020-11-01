@@ -13,19 +13,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:gravity="center"
-            android:text=" Fragment 1"
-            android:textSize="30dp" />
-
-        <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:background="@android:color/holo_green_light"
             android:gravity="center"
-            android:text="Unless otherwise indicated, this application is our proprietary property and all source code, functionality, software, website designsand logos contained therein are owned or controlled by us or licensed to us, and are protected by copyrigh and trademark laws and various other intellectual property rights and unfair competition laws of the United States."
+            android:text="@string/disclaimer"
             android:textColor="@android:color/black" />
 
         <ImageView

@@ -21,7 +21,7 @@
             android:textSize="18dp" />
 
         <Button
-            android:id="@+id/btnPair"
+            android:id="@+id/btnPairedDevices"
             android:layout_width="189dp"
             android:layout_height="58dp"
             android:layout_alignBottom="@+id/txPair"

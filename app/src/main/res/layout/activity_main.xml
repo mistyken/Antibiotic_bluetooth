@@ -31,8 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:background="@android:color/holo_orange_dark"
-                android:backgroundTint="#ffff" />
+                android:background="@android:color/holo_orange_dark" />
         </androidx.appcompat.widget.Toolbar>
 
     </LinearLayout>
