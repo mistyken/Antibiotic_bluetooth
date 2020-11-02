@@ -1,33 +1,19 @@
 package com.example.bluetoothapp;
 
-import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import com.example.bluetoothapp.model.User;
 import com.example.bluetoothapp.model.Metric;
-import com.example.bluetoothapp.adapter.AntibioticAPI;
-
-import java.util.Date;
+import com.example.bluetoothapp.Network.AntibioticAPIUtils;
+import com.example.bluetoothapp.Network.AntibioticCallbacks;
 
 public class PostMetricViewModel extends ViewModel {
-    static final String BASE_URL = "https://m6fea98ao1.execute-api.us-west-1.amazonaws.com/dev/";
-
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
-
-    AntibioticAPI service = retrofit.create(AntibioticAPI.class);
 
     public void createUser(String email, String first_name, String last_name) {
         User user = new User();
@@ -35,33 +21,40 @@ public class PostMetricViewModel extends ViewModel {
         user.set_first_name(first_name);
         user.set_last_name(last_name);
 
-        Call<User> call = service.createUser(user);
-        call.enqueue(new Callback<User>() {
+        AntibioticAPIUtils.getAPIService().createUser(user).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-
+                Log.i("[INFO] createUser", response.toString());
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-
+                Log.e("[ERROR] CreateUser", t.toString());
             }
         });
     }
 
-    public void getUser(String email) {
-        Call<User> call =service.loadUser(email);
-        call.enqueue(new Callback<User>() {
+    public void getUser(String email, @Nullable final AntibioticCallbacks callbacks) {
+        AntibioticAPIUtils.getAPIService().loadUser(email).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
                     User user = response.body();
+
+                    if (callbacks != null) {
+                        callbacks.onSuccess(String.format("%s %s %s", user.get_email(), user.get_first_name(), user.get_last_name()));
+                    }
+                } else {
+                    if (callbacks != null) {
+                        callbacks.onSuccess("Unable to retrieve user");
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-
+                if (callbacks != null)
+                    callbacks.onError(t);
             }
         });
     }
@@ -73,17 +66,15 @@ public class PostMetricViewModel extends ViewModel {
         metric.set_heart_rate(heartRate);
         metric.set_datetime(datetime);
 
-        Call<Metric> call = service.postMetric(metric);
-        call.enqueue(new Callback<Metric>() {
+        AntibioticAPIUtils.getAPIService().postMetric(metric).enqueue(new Callback<Metric>() {
             @Override
             public void onResponse(Call<Metric> call, Response<Metric> response) {
-
-                Log.i("INFO", response.toString());
+                Log.i("[INFO] postMetrics", response.toString());
             }
 
             @Override
             public void onFailure(Call<Metric> call, Throwable t) {
-                Log.e("ERROR", t.toString());
+                Log.e("[ERROR] postMetrics", t.toString());
             }
         });
     }

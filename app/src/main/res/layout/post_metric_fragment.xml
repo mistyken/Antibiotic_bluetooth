@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/userInfoView"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="53dp"
             android:text="TextView" />
 
         <EditText
@@ -29,6 +29,28 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:text="Get user" />
+
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="first name" />
+
+        <EditText
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="last name" />
+
+        <Button
+            android:id="@+id/createUser"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="Create user" />
 
         <EditText
             android:id="@+id/emailField2"
