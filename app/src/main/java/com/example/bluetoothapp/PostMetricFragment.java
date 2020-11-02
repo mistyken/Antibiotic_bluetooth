@@ -2,9 +2,9 @@ package com.example.bluetoothapp;
 
 import androidx.lifecycle.ViewModelProviders;
 
-import android.bluetooth.BluetoothAdapter;
-import android.content.Intent;
 import android.os.Bundle;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,15 +15,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import com.example.bluetoothapp.Network.AntibioticCallbacks;
 
 public class PostMetricFragment extends Fragment {
 
     private PostMetricViewModel mViewModel;
-
-    public static PostMetricFragment newInstance() {
-        return new PostMetricFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -35,8 +33,14 @@ public class PostMetricFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(PostMetricViewModel.class);
+        final TimeZone timeZone = TimeZone.getTimeZone("UTC");
 
-        Button getUser = view.findViewById(R.id.getUserButton);
+        final TextView userInfoView = view.findViewById(R.id.userInfoView);
+        final EditText emailField1 = view.findViewById(R.id.emailField1);
+        final Button getUser = view.findViewById(R.id.getUserButton);
+        final EditText firstName = view.findViewById(R.id.firstName);
+        final EditText lastName = view.findViewById(R.id.lastName);
+        final Button createUser = view.findViewById(R.id.createUser);
         final Button postMetric = view.findViewById(R.id.postMetricButton);
         final EditText emailField2 = view.findViewById(R.id.emailField2);
         final EditText deviceId = view.findViewById(R.id.deviceIdField);
@@ -44,13 +48,43 @@ public class PostMetricFragment extends Fragment {
 
         postMetric.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 String email = emailField2.getText().toString();
                 String deviceID = deviceId.getText().toString();
                 String heart_rate = heartRate.getText().toString();
-                Toast.makeText(PostMetricFragment.super.getContext(), String.format("%s %s %s %s", email, deviceID, heart_rate, "123456"), Toast.LENGTH_SHORT).show();
+                long currentTime = Calendar.getInstance(timeZone).getTimeInMillis();
 
-                mViewModel.postMetrics(email, deviceID, heart_rate, "123456");
+                mViewModel.postMetrics(email, deviceID, heart_rate, String.valueOf(currentTime));
+            }
+        });
+
+        createUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = emailField1.getText().toString();
+                String first_name = firstName.getText().toString();
+                String last_name = lastName.getText().toString();
+
+                mViewModel.createUser(email, first_name, last_name);
+            }
+        });
+
+        getUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = emailField1.getText().toString();
+
+                mViewModel.getUser(email, new AntibioticCallbacks() {
+                    @Override
+                    public void onSuccess(@NonNull String data) {
+                        userInfoView.setText(data);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable throwable) {
+
+                    }
+                });
             }
         });
     }

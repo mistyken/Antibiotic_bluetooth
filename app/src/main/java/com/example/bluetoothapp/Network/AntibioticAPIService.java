@@ -1,4 +1,4 @@
-package com.example.bluetoothapp.adapter;
+package com.example.bluetoothapp.Network;
 
 import com.example.bluetoothapp.model.Metric;
 import com.example.bluetoothapp.model.User;
@@ -9,7 +9,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Body;
 
-public interface AntibioticAPI {
+
+public interface AntibioticAPIService {
     @GET("users/{email}")
     Call<User> loadUser(@Path("email") String email);
 
